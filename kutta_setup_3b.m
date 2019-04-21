@@ -1,4 +1,4 @@
-function first_few = kutta_setup_3b(vec, h)    
+function first_few = kutta_setup_3b(vec, h)   
     first_few = zeros(18,4);
     index = 1;
     first_few(:,index) = vec;
