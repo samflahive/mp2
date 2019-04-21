@@ -1,7 +1,7 @@
 function points = three_body_next_step(first_four,N,h)
-    points = zeros(12, N);
+    points = zeros(18, N);
     %points(:,1:4) = kutta_setup(h);
-    points(1:12,1:4) = first_four;
+    points(:,1:4) = first_four;
     for index = 5:N
         Fn_1 = three_body_time_der(points(:, index-1));
         Fn_2 = three_body_time_der(points(:, index-2));

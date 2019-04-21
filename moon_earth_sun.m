@@ -1,4 +1,5 @@
 function points = moon_earth_sun(N,h)
+    points = zeros(18, N);
     sun_pos = [-1.632983093123187*10^-3,7.58555428934593*10^-3,-3.467860953876841*10^-5];
     sun_vel = [-8.331941083332449*10^-6,8.465575816881149*10^-7,2.163759314486097*10^-7];
     
@@ -10,9 +11,9 @@ function points = moon_earth_sun(N,h)
     
     posits = [moon_pos; earth_pos; sun_pos];
     
-    vec = [posits(1,1:2)';posits(2,1:2)';posits(3,1:2)';moon_vel(1:2)';earth_vel(1:2)';sun_vel(1:2)'];
+    vec = [moon_pos, earth_pos, sun_pos, moon_vel, earth_vel, sun_vel]';
     
-    four = kutta_setup(vec, h);
+    four = kutta_setup_3b(vec, h);
     
     points = three_body_next_step(four,N,h);
 end

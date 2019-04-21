@@ -3,9 +3,9 @@ function F = three_body_time_der(vec)
     earth_mass = 5.9722*10^24;
     sun_mass = 1.98855*10^30;
     
-    moon_acc=get_accel(earth_mass, vec(3:4), sun_mass, vec(5:6), vec(1:2));
-    earth_acc=get_accel(moon_mass, vec(1:2), sun_mass, vec(5:6), vec(3:4));
-    sun_acc=get_accel(moon_mass, vec(1:2), earth_mass, vec(3:4), vec(5:6));
+    moon_acc=get_accel(earth_mass, vec(4:6),  vec(1:3))+get_accel(sun_mass, vec(7:9), vec(1:3));
+    earth_acc=get_accel(moon_mass, vec(1:3), vec(4:6))+get_accel(sun_mass, vec(7:9), vec(4:6));
+    sun_acc=get_accel(moon_mass, vec(1:3), vec(7:9))+get_accel(earth_mass, vec(4:6), vec(7:9));
     
-    F = [vec(7:12);moon_acc;earth_acc;sun_acc];
+    F = [vec(10:18);moon_acc;earth_acc;sun_acc];
 end
