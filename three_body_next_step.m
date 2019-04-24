@@ -1,4 +1,4 @@
-function points = three_body_next_step(first_four,N,h)
+function points = three_body_ab(first_four,N,h)
     points = zeros(18, N);
     %points(:,1:4) = kutta_setup(h);
     points(:,1:4) = first_four;

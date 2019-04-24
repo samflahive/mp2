@@ -1,11 +1,8 @@
-function F = three_body_time_der(vec)
-    moon_mass = 7.342*10^22;
-    earth_mass = 5.9722*10^24;
-    sun_mass = 1.98855*10^30;
+function F = three_body_time_der(mass_A, mass_B, mass_C, vec)
     
-    moon_acc=get_accel(earth_mass, vec(4:6),  vec(1:3))+get_accel(sun_mass, vec(7:9), vec(1:3));
-    earth_acc=get_accel(moon_mass, vec(1:3), vec(4:6))+get_accel(sun_mass, vec(7:9), vec(4:6));
-    sun_acc=get_accel(moon_mass, vec(1:3), vec(7:9))+get_accel(earth_mass, vec(4:6), vec(7:9));
+    acc_A=get_accel(mass_B, vec(4:6),  vec(1:3))+get_accel(mass_C, vec(7:9), vec(1:3));
+    acc_B=get_accel(mass_A, vec(1:3), vec(4:6))+get_accel(mass_C, vec(7:9), vec(4:6));
+    acc_C=get_accel(mass_A, vec(1:3), vec(7:9))+get_accel(mass_B, vec(4:6), vec(7:9));
     
-    F = [vec(10:18);moon_acc;earth_acc;sun_acc];
+    F = [vec(10:18);acc_A;acc_B;acc_C];
 end

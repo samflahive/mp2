@@ -1,4 +1,4 @@
-function first_few = kutta_setup_2b((mass_a, mass_B, vec, N, h)    
+function first_few = kutta_4th_order_two_body(mass_a, mass_B, vec, N, h)    
     first_few = zeros(12,4);
     index = 1;
     first_few(:,index) = vec;

@@ -1,10 +1,8 @@
-function F = two_body_time_der(vec)
-    earth_mass = 5.9722*10^24;
-    iss_mass = 419725;
+function F = two_body_time_der(mass_A, mass_B, vec)
     
-    earth_acc = get_accel(iss_mass, vec(4:6), vec(1:3));
-    iss_acc = get_accel(earth_mass, vec(1:3), vec(4:6));
+    acc_A = get_accel(mass_B, vec(4:6), vec(1:3));
+    acc_B = get_accel(mass_A, vec(1:3), vec(4:6));
     
-    F = [vec(7:12);earth_acc;iss_acc];
+    F = [vec(7:12);acc_A;acc_B];
 
 end
